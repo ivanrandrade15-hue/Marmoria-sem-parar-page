@@ -1,0 +1,104 @@
+<!DOCTYPE html><html lang="pt-br">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Marmoraria Sem Parar</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0b0b0b;--card:#111;--muted:#9aa0a6;--accent:#ffffff}
+*{box-sizing:border-box}
+body{margin:0;font-family:'Inter',sans-serif;background:var(--bg);color:#fff}
+.container{max-width:1200px;margin:auto;padding:0 20px}/* HERO */ header{position:relative;height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden} header::before{content:"";position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat;filter:brightness(0.35)} header::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,.8) 100%)} .hero{position:relative;z-index:2} .hero h1{font-family:'Playfair Display',serif;font-size:3rem;margin:0} .hero p{color:#ddd;margin:10px 0 20px} .btn{background:#fff;color:#000;padding:14px 28px;border-radius:30px;text-decoration:none;display:inline-block;font-weight:600} .btn.whatsapp{background:#25D366;color:#000}
+
+/* SECTION */ section{padding:70px 0} section h2{font-family:'Playfair Display',serif;text-align:center;margin-bottom:40px}
+
+/* GRID */ .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px} .card{background:var(--card);padding:20px;border-radius:15px;transition:.3s} .card:hover{transform:translateY(-5px)}
+
+/* IMAGES */ .card img{width:100%;border-radius:10px;margin-bottom:10px}
+
+/* TESTIMONIAL */ .testimonial{background:#111;padding:20px;border-radius:15px}
+
+/* FORM */ form{max-width:500px;margin:auto} input,textarea{width:100%;padding:15px;margin:10px 0;border:none;border-radius:10px}
+
+/* FOOTER */ footer{text-align:center;padding:30px;background:#000;color:#aaa}
+
+/* ANIMATION */ .fade{opacity:0;transform:translateY(30px);transition:1s} .fade.show{opacity:1;transform:translateY(0)} </style>
+
+</head>
+<body><header>
+  <div class="hero">
+    <img src="logo.png" alt="Logo Marmoraria Sem Parar" style="width:120px;margin-bottom:20px;border-radius:50%;">
+    <h1>Marmoraria Sem Parar</h1>
+    <p>Luxo em mármore e granito sob medida</p>
+    <a href="#orcamento" class="btn">Solicitar Orçamento</a>
+    <br><br>
+    <a href="https://wa.me/5511999999999" class="btn whatsapp">Falar no WhatsApp</a>
+  </div>
+</header><section class="fade">
+  <div class="container">
+    <h2>Projetos Realizados</h2>
+    <div class="grid">
+      <div class="card"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c"/><p>Cozinhas modernas</p></div>
+      <div class="card"><img src="https://images.unsplash.com/photo-1582582429416-8a61c2a7e7bb"/><p>Banheiros sofisticados</p></div>
+      <div class="card"><img src="https://images.unsplash.com/photo-1598300053653-1d7f0f3c7d2b"/><p>Escadas em mármore</p></div>
+    </div>
+  </div>
+</section><section class="fade">
+  <div class="container">
+    <h2>Tipos de Mármore</h2>
+    <div class="grid">
+      <div class="card">Nero Marquina</div>
+      <div class="card">Carrara</div>
+      <div class="card">São Gabriel</div>
+    </div>
+  </div>
+</section><section class="fade">
+  <div class="container">
+    <h2>Por que escolher a gente?</h2>
+    <div class="grid">
+      <div class="card">+100 projetos entregues</div>
+      <div class="card">Acabamento impecável</div>
+      <div class="card">Atendimento rápido</div>
+    </div>
+  </div>
+</section><section class="fade">
+  <div class="container">
+    <h2>Depoimentos</h2>
+    <div class="grid">
+      <div class="testimonial">"Serviço perfeito, acabamento impecável!"</div>
+      <div class="testimonial">"Entrega rápida e qualidade absurda."</div>
+    </div>
+  </div>
+</section><section id="orcamento" class="fade">
+  <div class="container">
+    <h2>Solicite seu orçamento</h2>
+    <form onsubmit="sendWhats(event)">
+      <input type="text" id="nome" placeholder="Seu nome" required>
+      <input type="tel" id="tel" placeholder="WhatsApp" required>
+      <textarea id="msg" placeholder="Descreva seu projeto"></textarea>
+      <button class="btn">Enviar</button>
+    </form>
+  </div>
+</section><footer>
+  <p>São Paulo - SP | Marmoraria Sem Parar</p>
+</footer><script>
+// fade animation
+const faders=document.querySelectorAll('.fade');
+window.addEventListener('scroll',()=>{
+ faders.forEach(el=>{
+  const top=el.getBoundingClientRect().top;
+  if(top<window.innerHeight-100){el.classList.add('show')}
+ })
+});
+
+// whatsapp form
+function sendWhats(e){
+ e.preventDefault();
+ const nome=document.getElementById('nome').value;
+ const tel=document.getElementById('tel').value;
+ const msg=document.getElementById('msg').value;
+ const texto=`Olá, meu nome é ${nome}%0AWhatsApp: ${tel}%0AProjeto: ${msg}`;
+ window.open(`https://wa.me/5511999999999?text=${texto}`,'_blank');
+}
+</script></body>
+</html>
